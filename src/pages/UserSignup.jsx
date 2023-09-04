@@ -2,7 +2,7 @@ import { useState } from "react";
 import service from "../services/service.config";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function UserSignup() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -20,13 +20,13 @@ function Signup() {
     // ... signup logic here
 
     try {
-      await service.post("/auth/signup", {
+      await service.post("/auth/user-signup", {
         username,
         email,
         password,
       });
 
-      navigate("/login");
+      navigate("/animal-signup");
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {
@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>User Sign Up</h1>
 
       <form onSubmit={handleSignup}>
         <label>Username:</label>
@@ -80,4 +80,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default UserSignup;

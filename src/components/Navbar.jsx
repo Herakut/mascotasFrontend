@@ -23,12 +23,13 @@ function Navbar() {
 
       {isUserActive === true ? (
         <>
-          <Link to="/perfil">Pagina privadas</Link>
-          <button onClick={handleLogout}>Cerrar Sesión</button>
+          <Link to="/perfil">Profile</Link>
+          <Link to="/animal-signup">Register animal</Link>
+          <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <>
-          <Link to="/signup">Registro</Link>
+          <Link to="/user-signup">Registro</Link>
           <Link to="/login">Acceso</Link>
         </>
       )}
