@@ -1,6 +1,12 @@
-#root {
-  text-align: center;
+
+/* HOME PAGE */
+
+#home-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
 }
-a {
-  margin: 10px
+
+.user-card {
+  border: 1px solid #ffffff;
 }

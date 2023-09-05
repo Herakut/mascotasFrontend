@@ -9,6 +9,7 @@ import Error from './pages/Error'
 import NotFound from './pages/NotFound'
 import UserSignup from './pages/UserSignup'
 import AnimalSignup from './pages/AnimalSignup'
+import AnimalDetails from './pages/AnimalDetails'
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
         <Route path="/user-signup" element={<UserSignup />} />
         <Route path="/animal-signup" element={<AnimalSignup />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/animal-edit" element={<AnimalDetails />} />
 
         <Route path="/error" element={<Error />} />
         <Route path="/*" element={<NotFound />} />

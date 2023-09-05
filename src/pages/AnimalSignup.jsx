@@ -24,6 +24,7 @@ function AnimalSignup () {
   const navigate = useNavigate()
 
   const { userData } = useContext(AuthContext);
+  console.log(userData)
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -47,6 +48,34 @@ function AnimalSignup () {
       }
     }
   }
+  // const handleCreate = async (e) => {
+  //   e.preventDefault();
+  
+  //   if (!userData || !userData._id) {
+  //     // Manejar el caso en que userData no esté definido o no tenga _id
+  //     return;
+  //   }
+  //   console.log(userData)
+  
+  //   try {
+  //     await service.post(`/animal/animal-signup/${userData._id}`, {
+  //       name,
+  //       race,
+  //       years,
+  //       description,
+  //       genre
+  //     });
+  
+  //     navigate("/perfil");
+  //   } catch (error) {
+  //     console.log(error);
+  //     if (error.response && error.response.status === 400) {
+  //       setErrorMessage(error.response.data.errorMessage);
+  //     } else {
+  //       navigate("/error");
+  //     }
+  //   }
+  // }
 
 
   return (

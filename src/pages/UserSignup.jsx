@@ -17,7 +17,6 @@ function UserSignup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    // ... signup logic here
 
     try {
       await service.post("/auth/user-signup", {

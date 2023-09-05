@@ -25,6 +25,7 @@ function Navbar() {
         <>
           <Link to="/perfil">Profile</Link>
           <Link to="/animal-signup">Register animal</Link>
+          <Link to="/animal-details">Detalles de tus mascotas</Link>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
