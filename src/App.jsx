@@ -24,7 +24,7 @@ function App() {
         <Route path="/user-signup" element={<UserSignup />} />
         <Route path="/animal-signup" element={<AnimalSignup />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/animal-edit" element={<AnimalDetails />} />
+        <Route path="/animal/:id/details" element={<AnimalDetails />} />
 
         <Route path="/error" element={<Error />} />
         <Route path="/*" element={<NotFound />} />

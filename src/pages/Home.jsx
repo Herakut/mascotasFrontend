@@ -8,17 +8,11 @@ function Home() {
 
   const followUser = async (userId) => {
     try {
-      await service.patch(`/user/follow/${userId}`);
-      // Actualiza la lista de usuarios después de seguir a uno
-      const updatedUsers = users.map((user) => {
-        if (user._id === userId) {
-          return { ...user, isFollowing: true };
-        }
-        return user;
-      });
-      setUsers(updatedUsers);
+      const response = await service.patch(`/user/follow/${userId}`);
+      if (response === 200) {
+      }
     } catch (error) {
-      console.error('Error al seguir al usuario:', error);
+      console.error("Error al seguir al usuario:", error);
     }
   };
 
@@ -34,7 +28,7 @@ function Home() {
       });
       setUsers(updatedUsers);
     } catch (error) {
-      console.error('Error al dejar de seguir al usuario:', error);
+      console.error("Error al dejar de seguir al usuario:", error);
     }
   };
 
@@ -50,9 +44,7 @@ function Home() {
       .catch((error) => {
         console.error("Error al obtener los usuarios:", error);
       });
-      
   }, []);
-  
 
   return (
     <div>
