@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import service from "../services/service.config";
 import { AuthContext } from "../context/auth.context";
 
+
+//llama al be para ver lo amigos.
+
 function Home() {
   const [users, setUsers] = useState([]);
   const { userData } = useContext(AuthContext);
@@ -46,11 +49,17 @@ function Home() {
       });
   }, []);
 
+
+
+
+
   return (
     <div>
       <div id="home-container">
         {users.map((user) => (
+          
           <div key={user._id} className="user-card">
+            {console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaaa2", user)}
             <div className="user-info">
               <div id="profile-img">
                 <img
@@ -61,11 +70,13 @@ function Home() {
                 />
               </div>
               <h4 id="user-name">{user.username}</h4>
-              {user.friends.find((id) => id === userData._id) ? (
+
+              {user.friends.find((eachFriend) => eachFriend._id  === userData._id)  ? ( // userData=a mi id, utiliza esto
                 <button onClick={() => unfollowUser(user._id)}>Unfollow</button>
               ) : (
                 <button onClick={() => followUser(user._id)}>Follow</button>
               )}
+
             </div>
             {/* Mostrar animales del usuario */}
             <div className="user-animals">
@@ -88,6 +99,7 @@ function Home() {
             </div>
           </div>
         ))}
+
       </div>
     </div>
   );

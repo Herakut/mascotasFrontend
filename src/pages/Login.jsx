@@ -50,6 +50,8 @@ function Login() {
     <div>
       <h1>Log In</h1>
 
+        {/* agregar el id */}
+
       <form onSubmit={handleLogin}>
         <label>Email:</label>
         <input
