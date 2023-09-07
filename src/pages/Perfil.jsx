@@ -43,7 +43,7 @@ function Perfil() {
 
       <img src="{{user.profilePic}}" alt="image-perfil" />
       <form action="/user/upload-profile-pic" method="post" enctype="multipart/form-data">
-        <label for="profilePic">Imagen de Perfilddddddddddd</label>
+        <label for="profilePic">Imagen de Perfil</label>
         <input type="file" name="profilePic" />
         <button>Agregar</button>
 
