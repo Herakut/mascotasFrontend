@@ -13,16 +13,22 @@ function Perfil() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    service
+    getData()
+  }, []);
+
+
+  const getData = async () => {
+    try{ 
+    const response= await service
       .get(`/user/${userData._id}/animals`)
-      .then((response) => {
+     
         console.log(response.data);
         setUserInfo(response.data);
-      })
-      .catch((error) => {
+      
+      }catch(error){
         console.error("Error al obtener los datos del usuario:", error);
-      });
-  }, []);
+      }
+  };
 
   const handleFileUpload = async (event) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -64,7 +70,7 @@ function Perfil() {
         imageUrl,
         
       });
-      navigate("/perfil")
+      getData()
     } catch (error) {
       navigate("/error");
     }
