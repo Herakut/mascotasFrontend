@@ -2,9 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import service from "../services/service.config";
 
+import { uploadImageService } from "../services/upload.services.js";
+import { Navigate, useNavigate } from "react-router-dom";
+
 function Perfil() {
   const { userData } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     service
@@ -18,6 +24,52 @@ function Perfil() {
       });
   }, []);
 
+  const handleFileUpload = async (event) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    if (!event.target.files[0]) {
+      // to prevent accidentally clicking the choose file button and not selecting a file
+      return;
+    }
+
+    setIsUploading(true); // to start the loading animation
+
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("image", event.target.files[0]);
+    //                   |
+    //     this name needs to match the name used in the middleware => uploader.single("image")
+
+    try {
+      const response = await uploadImageService(uploadData);
+      console.log("BUSCAAAAAAAAAAAAAAAAAA",response)
+      // or below line if not using services
+      // const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`, uploadData)
+
+      setImageUrl(response.data.cloudinaryURL);
+      //                          |
+      //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+
+      setIsUploading(false); // to stop the loading animation
+    } catch (error) {
+      console.log(error, "AKIII")
+      navigate("/error");
+      
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await service.post("user/picture-update", {
+        imageUrl,
+        
+      });
+      navigate("/perfil")
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
   // Hacer la clausula de guardia aqui.
   if (!userInfo) {
     return (
@@ -28,39 +80,27 @@ function Perfil() {
   }
 
   return (
-
-
-
-
-
-
-
     //cloudinary
 
     <div>
-      <h3>Perfil usuario {userInfo.username}</h3>
-      <p>{userInfo.profileImg}</p>
-
-      <img src="{{user.profilePic}}" alt="image-perfil" />
       
-      <form action="/user/upload-profile-pic" method="post" enctype="multipart/form-data">
-        <label for="profilePic">Imagen de Perfil</label>
-        <input type="file" name="profilePic" />
+
+      <h3>Perfil usuario {userInfo.username}</h3>
+      
+
+      <img src={userInfo.profileImg} alt="image-perfil" />
+
+      <form onSubmit={handleSubmit}>
+        <label>Añadir foto: </label>
+        <input
+          type="file"
+          name="image"
+          onChange={handleFileUpload}
+          disabled={isUploading}
+        />
+
         <button>Agregar</button>
-
       </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
       <h2>Animales</h2>
       <ul>
