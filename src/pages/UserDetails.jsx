@@ -23,7 +23,7 @@ function UserDetails() {
       console.log(ownerId, animalId, text)
       const commentCreated = await service.post("/comment/comment", { ownerId, animalId, text });
 
-      location.reload();
+      location.reload(); // Modificar esto.
     } catch (error) {
       console.log(error);
       navigate("/error");

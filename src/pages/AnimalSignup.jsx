@@ -48,35 +48,7 @@ function AnimalSignup () {
       }
     }
   }
-  // const handleCreate = async (e) => {
-  //   e.preventDefault();
   
-  //   if (!userData || !userData._id) {
-  //     // Manejar el caso en que userData no esté definido o no tenga _id
-  //     return;
-  //   }
-  //   console.log(userData)
-  
-  //   try {
-  //     await service.post(`/animal/animal-signup/${userData._id}`, {
-  //       name,
-  //       race,
-  //       years,
-  //       description,
-  //       genre
-  //     });
-  
-  //     navigate("/perfil");
-  //   } catch (error) {
-  //     console.log(error);
-  //     if (error.response && error.response.status === 400) {
-  //       setErrorMessage(error.response.data.errorMessage);
-  //     } else {
-  //       navigate("/error");
-  //     }
-  //   }
-  // }
-
 
   return (
     <div>
@@ -98,6 +70,24 @@ function AnimalSignup () {
           <option value="mastin">Mastin</option>
           <option value="labrador">Labrador</option>
           <option value="border-collie">Border Collie</option>
+          <option value="husky">Husky</option>
+          <option value="palleiro">Palleiro</option>
+          <option value="sabueso">Sabueso</option>
+          <option value="pastor-Alemán">Pastor Alemán</option>
+          <option value="pastor-Belga">Pastor Belga</option>
+          <option value="bulldog-Frances">Bulldog Francés</option>
+          <option value="bulldog-Inglés">Bulldog Inglés</option>
+          <option value="boxer">Boxer</option>
+          <option value="pomeramia">Pomeramia</option>
+          <option value="chihuahua">Chihuahua</option>
+          <option value="perdigero">Perdigero</option>
+          <option value="beagle">Beagle</option>
+          <option value="perro-de-aguas">Perro de aguas</option>
+          <option value="pinscher-miniatura">Pinscher miniatura</option>
+          <option value="galgo">Galgo</option>
+          <option value="schnauzer-miniatura">Schnauzer miniatura</option>
+          <option value="Yorkshire">Yorkshire</option>
+          <option value="no-especificar">No especificar</option>
         </select>
 
         <br />
