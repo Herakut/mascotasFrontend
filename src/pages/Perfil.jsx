@@ -31,6 +31,16 @@ function Perfil() {
     <div>
       <h3>Perfil usuario {userInfo.username}</h3>
       <p>{userInfo.profileImg}</p>
+      <form action="/user/upload-profile-pic" method="post" enctype="multipart/form-data">
+        <label for="profilePic">Imagen de Perfil</label>
+        <input type="file" name="profilePic" />
+
+
+
+      </form>
+
+
+
       <h2>Animales</h2>
       <ul>
         {userInfo.animals.map((animal) => (
