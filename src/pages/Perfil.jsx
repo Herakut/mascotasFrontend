@@ -28,16 +28,38 @@ function Perfil() {
   }
 
   return (
+
+
+
+
+
+
+
+    //cloudinary
+
     <div>
       <h3>Perfil usuario {userInfo.username}</h3>
       <p>{userInfo.profileImg}</p>
+
+      <img src="{{user.profilePic}}" alt="image-perfil" />
       <form action="/user/upload-profile-pic" method="post" enctype="multipart/form-data">
-        <label for="profilePic">Imagen de Perfil</label>
+        <label for="profilePic">Imagen de Perfilddddddddddd</label>
         <input type="file" name="profilePic" />
+        <button>Agregar</button>
 
 
 
       </form>
+
+
+
+
+
+
+
+
+
+
 
 
 
