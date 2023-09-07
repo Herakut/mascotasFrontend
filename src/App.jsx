@@ -11,6 +11,7 @@ import UserSignup from './pages/UserSignup'
 import AnimalSignup from './pages/AnimalSignup'
 import AnimalDetails from './pages/AnimalDetails'
 import UserDetails from './pages/UserDetails'
+import IsPrivate from "./components/IsPrivate"
 
 function App() {
   
@@ -23,10 +24,10 @@ function App() {
         <Route path="/" element={ <Home />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/user-signup" element={<UserSignup />} />
-        <Route path="/animal-signup" element={<AnimalSignup />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/animal/:id/details" element={<AnimalDetails />} />
-        <Route path="/user/:id/details" element={<UserDetails />} />
+        <Route path="/animal-signup" element={<IsPrivate><AnimalSignup /></IsPrivate>} />
+        <Route path="/perfil" element={<IsPrivate><Perfil /></IsPrivate>} />
+        <Route path="/animal/:id/details" element={<IsPrivate><AnimalDetails /></IsPrivate>} />
+        <Route path="/user/:id/details" element={<IsPrivate><UserDetails /></IsPrivate>} />
 
         <Route path="/error" element={<Error />} />
         <Route path="/*" element={<NotFound />} />

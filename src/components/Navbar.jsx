@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-function Navbar() {
+function Navbar () {
   const navigate = useNavigate();
 
   const { isUserActive, verifyToken } = useContext(AuthContext);
@@ -11,14 +11,13 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
 
-    // ! ...
     verifyToken(); // verificar un token que no existe para reiniciar los estados
 
     navigate("/login");
   };
 
   return (
-    <div>
+    <div id="navbar">
       <Link to="/">Home</Link>
 
       {isUserActive === true ? (

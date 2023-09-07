@@ -37,10 +37,11 @@ function UserSignup() {
   };
 
   return (
-    <div>
+    <div id="register-container">
       <h1>User Sign Up</h1>
 
       <form onSubmit={handleSignup}>
+        <div className="input-box">
         <label>Username:</label>
         <input
           type="text"
@@ -48,9 +49,11 @@ function UserSignup() {
           value={username}
           onChange={handleUsernameChange}
         />
+        </div>
 
         <br />
 
+        <div className="input-box">
         <label>Email:</label>
         <input
           type="email"
@@ -58,9 +61,11 @@ function UserSignup() {
           value={email}
           onChange={handleEmailChange}
         />
+        </div>
 
         <br />
 
+        <div className="input-box">
         <label>Password:</label>
         <input
           type="password"
@@ -68,6 +73,7 @@ function UserSignup() {
           value={password}
           onChange={handlePasswordChange}
         />
+        </div>
 
         <br />
 

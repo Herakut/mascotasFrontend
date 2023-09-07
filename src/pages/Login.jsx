@@ -47,29 +47,31 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id="login-container">
       <h1>Log In</h1>
 
-        {/* agregar el id */}
-
       <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+        <div className="input-box">
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
 
         <br />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+        <div className="input-box">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
 
         <br />
 

@@ -33,7 +33,7 @@ function AnimalDetails() {
       console.log(error);
       navigate("/error");
     }
-  }
+  };
 
   useEffect(() => {
     getData();
@@ -76,47 +76,55 @@ function AnimalDetails() {
   }
 
   return (
-    <div>
+    <div id="edit-animal-container">
       <h3>Editar a {animalDetails.name}</h3>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          onChange={handleNameChange}
-          value={name}
-        />
+        <div className="input-box">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            onChange={handleNameChange}
+            value={name}
+          />
+        </div>
 
         <br />
 
-        <label htmlFor="years">Years</label>
-        <input
-          type="number"
-          name="years"
-          onChange={handleYearsChange}
-          value={years}
-        />
+        <div className="input-box">
+          <label htmlFor="years">Years</label>
+          <input
+            type="number"
+            name="years"
+            onChange={handleYearsChange}
+            value={years}
+          />
+        </div>
 
         <br />
 
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          onChange={handleDescriptionChange}
-          value={description}
-        />
+        <div className="input-box">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            onChange={handleDescriptionChange}
+            value={description}
+          />
+        </div>
 
         <br />
 
-        <label htmlFor="profileImage">Profile Image</label>
-        <input
-          type="text"
-          name="profileImage"
-          onChange={handleProfileImageChange}
-          value={profileImage}
-        />
+        <div className="input-box">
+          <label htmlFor="profileImage">Profile Image</label>
+          <input
+            type="text"
+            name="profileImage"
+            onChange={handleProfileImageChange}
+            value={profileImage}
+          />
+        </div>
 
         <br />
 

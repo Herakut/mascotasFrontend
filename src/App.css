@@ -1,18 +1,78 @@
 
-/* HOME PAGE */
+/* NAVBAR */
+#navbar {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  background-color: gainsboro;
+  margin-bottom: 10px;
+}
 
+#navbar a,
+#navbar button {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1em 2em;
+}
+
+#navbar button {
+  background-color: #ffffff;
+  color: #000000;
+  outline: none;
+}
+
+#navbar a:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+
+/* HOME PAGE */
 #home-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
+  row-gap: 1em;
+  text-decoration: none;
 }
 
 .user-card {
   border: 1px solid #ffffff;
+  padding: 1em;
+
+}
+
+.user-card .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.user-card .user-info img {
+  border-radius: 5em;
+}
+
+.user-card .user-info button {
+  background-color: #ffffff;
+  padding: 1em 2em;
+}
+
+.user-card .user-info #user-name {
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 
 /* USER DETAILS */
+
 #img-name {
   display: flex;
   justify-content: center;
@@ -24,4 +84,122 @@
   width: 72px;
   height: 72px;
   border-radius: 72px;
+}
+
+#user-details-container #animales-container h2 {
+  text-align: start;
+}
+
+#user-details-container #comments-container form {
+  width: 80%;
+  margin: auto;
+}
+
+#user-details-container #comments-container form .input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-details-container #comments-container #comentarios {
+  width: 80%;
+  margin: auto;
+}
+
+
+/* PERFIL */
+#perfil-container h1 {
+  text-align: center;
+}
+
+#perfil-container #img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+#perfil-container #img-container img {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 10em;
+}
+
+#perfil-container #img-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#animales-container h2 {
+  text-align: center;
+}
+
+#animales-container #animales {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+}
+
+#animales-container #animales .animal img {
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#animales-container #animales .animal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#animales-container #animales .animal .raza-edad {
+  display: flex;
+  gap: 1em;
+}
+
+#animales-container #animales .animal .editar {
+  padding: 1em 2em;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+/* LOGIN */
+#login-container,
+#register-container,
+#edit-animal-container,
+#crear-animal-container {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0 1em 1em 1em;
+}
+
+#login-container form button,
+#register-container form button,
+#edit-animal-container form button,
+#crear-animal-container form button {
+  display: inline-block;
+  margin: auto;
+}
+
+#login-container form,
+#register-container form,
+#edit-animal-container form,
+#crear-animal-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  display: flex;
+  gap: 1em;
+}
+
+.input-box input {
+  flex-grow: 1;
 }

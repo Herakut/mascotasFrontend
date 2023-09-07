@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const [users, setUsers] = useState([]);
   const { userData } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const followUser = async (userId) => {
     try {
       const response = await service.patch(`/user/follow/${userId}`);
       if (response.status == 200) {
-        navigate("/")
+        navigate("/");
       }
     } catch (error) {
       console.error("Error al seguir al usuario:", error);
@@ -24,9 +24,9 @@ function Home() {
   const unfollowUser = async (userId) => {
     try {
       const response = await service.patch(`/user/unfollow/${userId}`);
-      console.log(response.status)
+      console.log(response.status);
       if (response.status == 200) {
-        navigate("/")
+        navigate("/");
       }
     } catch (error) {
       console.error("Error al dejar de seguir al usuario:", error);
@@ -45,9 +45,7 @@ function Home() {
   }, []);
 
   if (!users) {
-    return (
-      <p>Cargando información...</p>
-    )
+    return <p>Cargando información...</p>;
   }
 
   return (
@@ -55,7 +53,6 @@ function Home() {
       <div id="home-container">
         {users.map((user) => (
           <div key={user._id} className="user-card">
-            {console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaaa2", user)}
             <a href={`/user/${user._id}/details`} className="user-info">
               <div id="profile-img">
                 <img
@@ -74,26 +71,7 @@ function Home() {
               ) : (
                 <button onClick={() => followUser(user._id)}>Follow</button>
               )}
-            </a>
-            {/* Mostrar animales del usuario */}
-            <div className="user-animals">
-              {user.animals.map((animal) => (
-                <div key={animal._id} className="animal-card">
-                  <div className="animal-info">
-                    <div id="animal-profile-img">
-                      <img
-                        src={animal.profileImage}
-                        width={100}
-                        height={100}
-                        alt="Imagen de perfil del animal"
-                      />
-                    </div>
-                    <h4 id="animal-name">{animal.name}</h4>
-                    {/* Mostrar más información del animal aquí */}
-                  </div>
-                </div>
-              ))}
-            </div>
+            </a>            
           </div>
         ))}
       </div>

@@ -13,21 +13,18 @@ function Perfil() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData()
+    getData();
   }, []);
 
-
   const getData = async () => {
-    try{ 
-    const response= await service
-      .get(`/user/${userData._id}/animals`)
-     
-        console.log(response.data);
-        setUserInfo(response.data);
-      
-      }catch(error){
-        console.error("Error al obtener los datos del usuario:", error);
-      }
+    try {
+      const response = await service.get(`/user/${userData._id}/animals`);
+
+      console.log(response.data);
+      setUserInfo(response.data);
+    } catch (error) {
+      console.error("Error al obtener los datos del usuario:", error);
+    }
   };
 
   const handleFileUpload = async (event) => {
@@ -47,7 +44,7 @@ function Perfil() {
 
     try {
       const response = await uploadImageService(uploadData);
-      console.log("BUSCAAAAAAAAAAAAAAAAAA",response)
+      console.log("BUSCAAAAAAAAAAAAAAAAAA", response);
       // or below line if not using services
       // const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`, uploadData)
 
@@ -57,9 +54,8 @@ function Perfil() {
 
       setIsUploading(false); // to stop the loading animation
     } catch (error) {
-      console.log(error, "AKIII")
+      console.log(error, "AKIII");
       navigate("/error");
-      
     }
   };
 
@@ -68,9 +64,8 @@ function Perfil() {
     try {
       await service.post("user/picture-update", {
         imageUrl,
-        
       });
-      getData()
+      getData();
     } catch (error) {
       navigate("/error");
     }
@@ -86,42 +81,47 @@ function Perfil() {
   }
 
   return (
-    //cloudinary
+    <div id="perfil-container">
+      <h1>Perfil de {userInfo.username}</h1>
 
-    <div>
-      
+      <div id="img-container">
+        <img src={userInfo.profileImg} alt="image-perfil" />
 
-      <h3>Perfil usuario {userInfo.username}</h3>
-      
+        <form onSubmit={handleSubmit}>
+          <label>Añadir foto: </label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileUpload}
+            disabled={isUploading}
+          />
 
-      <img src={userInfo.profileImg} alt="image-perfil" />
+          <button>Agregar</button>
+        </form>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <label>Añadir foto: </label>
-        <input
-          type="file"
-          name="image"
-          onChange={handleFileUpload}
-          disabled={isUploading}
-        />
-
-        <button>Agregar</button>
-      </form>
-
-      <h2>Animales</h2>
-      <ul>
-        {userInfo.animals.map((animal) => (
-          <li key={animal._id}>
-            <p>Nombre: {animal.name}</p>
-            <p>Raza: {animal.race}</p>
-            <p>Edad: {animal.years} años</p>
-            <p>Descripción: {animal.description}</p>
-            <p>ProfileImg: {animal.profileImage}</p>
-            <p>Genero: {animal.genre}</p>
-            <a href={`animal/${animal._id}/details`}>Detalles</a>
-          </li>
-        ))}
-      </ul>
+      <div id="animales-container">
+        <h2>Animales</h2>
+        {userInfo.animals.length == 0 ? (
+          <p>No tiene animales.</p>
+        ) : (
+          <div id="animales">
+            {userInfo.animals.map((animal) => (
+              <div key={animal._id} className="animal">
+                <img src={animal.profileImage} alt="" />
+                <h3>{animal.name}</h3>
+                <div className="raza-edad">
+                  <p>{animal.race}</p>
+                  <p>{animal.years} años</p>
+                  <p>{animal.genre}</p>
+                </div>
+                <p>Descripción: {animal.description}</p>
+                <a href={`animal/${animal._id}/details`} className="editar">Editar detalles</a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
