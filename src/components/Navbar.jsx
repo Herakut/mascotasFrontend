@@ -17,7 +17,10 @@ function Navbar () {
   };
 
   return (
+    
     <div id="navbar">
+
+      <img src="./public/01.jpg" alt="" style={{ width: '250px', marginLeft: '20px' }} />
       <Link to="/">Home</Link>
 
       {isUserActive === true ? (
